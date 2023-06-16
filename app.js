@@ -1,6 +1,18 @@
 const list = document.getElementById("list");
 let quote_arr = [];
+const searchBar = document.getElementById("search");
 
+searchBar.addEventListener("keyup", e => {
+    const searchStr = e.target.value.toLowerCase();
+
+    let filteredQuotes = quote_arr.quotes.filter((quote) => {
+        console.log(quote)
+        return (quote.quote.toLowerCase().includes(searchStr) || quote.author.toLowerCase().includes(searchStr));
+    });
+
+
+    displayQuotes(filteredQuotes);
+})
 
 
 const loadQuotes = async() => {
